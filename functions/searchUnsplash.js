@@ -1,3 +1,6 @@
 exports.handler = function (event, context, callback) {
-    return { name: 'Mohammad Abed' };
+    return {
+        statusCode: 200,
+        body: `Hello Mohammad`,
+    };
 };

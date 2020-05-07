@@ -1,0 +1,26 @@
+{
+    "env": {
+        "es6": true
+    },
+    "extends": ["plugin:react/recommended", "plugin:prettier/recommended"],
+    "plugins": ["react-hooks", "react", "prettier", "jsx-a11y"],
+    "rules": {
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx"]
+            }
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/prop-types": 0,
+        "no-underscore-dangle": 0,
+        "import/prefer-default-export": 0
+    },
+    "parser": "babel-eslint",
+    "settings": {
+        "react": {
+            "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+        }
+    }
+}

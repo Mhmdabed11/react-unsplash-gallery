@@ -1,2 +1,6 @@
 [build]
   functions = "./functions"
+  environment = { ACCESS_TOKEN = "super secret" }
+
+[context.development.environment]
+  ACCESS_TOKEN = "super secret"

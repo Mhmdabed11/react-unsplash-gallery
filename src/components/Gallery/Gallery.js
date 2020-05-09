@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, GridItemImg, GridFigure, LoadingContainer, Loader, Container, SearchQuery } from "./Gallery.style";
 
-export default function Gallery({ images, loading, searchQuery }) {
+export default function Gallery({ images, loading, searchQuery, renderedRandomList }) {
     if (loading) {
         return (
             <Container>
@@ -17,7 +17,11 @@ export default function Gallery({ images, loading, searchQuery }) {
     }
     return (
         <Container>
-            <SearchQuery>{searchQuery}</SearchQuery>
+            <SearchQuery>
+                {!loading && renderedRandomList && images.length === 0
+                    ? `No results found for ${searchQuery}`
+                    : searchQuery}
+            </SearchQuery>
             <Grid>
                 {images.map((img) => (
                     <GridFigure key={img.id}>

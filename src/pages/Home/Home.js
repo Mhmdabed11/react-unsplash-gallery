@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import MainHero from "../../components/MainHero/MainHero";
 import Gallery from "../../components/Gallery/Gallery";
 
@@ -9,17 +9,7 @@ export default function Home() {
     const [searchQuery, setSearchQuery] = useState("");
     const [renderedRandomList, setRenderedRandomList] = useState(false);
 
-    useEffect(() => {
-        fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getRandomPhoto")
-            .then((response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then((data) => setHeroBackground(data))
-            .catch((err) => console.log(err));
-
+    const fetchRandomPhotos = useCallback(() => {
         // get random images in the begining
         fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getListPhotos")
             .then((response) => {
@@ -35,8 +25,23 @@ export default function Home() {
             .catch((err) => console.log(err));
     }, []);
 
+    useEffect(() => {
+        fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getRandomPhoto")
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then((data) => setHeroBackground(data))
+            .catch((err) => console.log(err));
+
+        fetchRandomPhotos();
+    }, [fetchRandomPhotos]);
+
     // handle form search
-    async function handleSearch(searchTerm) {
+
+    function handleSearch(searchTerm) {
         setSearchQuery(searchTerm);
         setLoading(true);
         fetch(`https://unsplash-gallery.netlify.app/.netlify/functions/searchUnsplash?query=${searchTerm}`)
@@ -56,6 +61,12 @@ export default function Home() {
             });
     }
 
+    // fetch random photos when we clear the search term
+    function handleClearSearchForm() {
+        fetchRandomPhotos();
+        setSearchQuery("");
+    }
+
     return (
         <div>
             <MainHero
@@ -66,6 +77,7 @@ export default function Home() {
                     `${heroBackground.user.first_name} ${heroBackground.user.last_name}`
                 }
                 handleSearch={handleSearch}
+                handleClearSearchForm={handleClearSearchForm}
             />
 
             <Gallery

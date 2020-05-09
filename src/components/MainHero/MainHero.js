@@ -13,11 +13,12 @@ import {
     SearchForm,
 } from "./MainHero.style";
 
-export default function MainHero({ bg, handleSearch, user }) {
+export default function MainHero({ bg, handleSearch, user, handleClearSearchForm }) {
     const [searchTerm, handleChange, setSearchTerm] = useFormInput("");
     function handleClearButtonClick(e) {
         e.preventDefault();
         setSearchTerm("");
+        handleClearSearchForm();
     }
 
     // handle form submission

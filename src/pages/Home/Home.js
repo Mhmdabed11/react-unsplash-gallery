@@ -12,6 +12,12 @@ export default function Home() {
             .then((response) => response.json())
             .then((data) => setHeroBackground(data))
             .catch((err) => console.log(err));
+
+        // get random images in the begining
+        fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getListPhotos")
+            .then((response) => response.json())
+            .then((data) => setImages(data))
+            .catch((err) => console.log(err));
     }, []);
 
     // handle form search

@@ -17,7 +17,13 @@ export default function Gallery({ images, loading }) {
         <Grid>
             {images.map((img) => (
                 <GridFigure key={img.id}>
-                    <GridItemImg src={img.urls.small} />
+                    <a href={img.links.html}>
+                        <GridItemImg
+                            src={img.urls.small}
+                            alt={img.alt_description}
+                            title={`Photo by ${img.user.first_name} ${img.user.last_name}`}
+                        />
+                    </a>
                 </GridFigure>
             ))}
         </Grid>

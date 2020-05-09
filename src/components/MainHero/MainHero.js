@@ -13,7 +13,7 @@ import {
     SearchForm,
 } from "./MainHero.style";
 
-export default function MainHero({ bg, handleSearch }) {
+export default function MainHero({ bg, handleSearch, user }) {
     const [searchTerm, handleChange, setSearchTerm] = useFormInput("");
     function handleClearButtonClick(e) {
         e.preventDefault();
@@ -26,7 +26,7 @@ export default function MainHero({ bg, handleSearch }) {
         handleSearch(searchTerm);
     }
     return (
-        <Section bg={bg}>
+        <Section bg={bg} title={`Photo by ${user}`}>
             <Container>
                 <Wrapper>
                     <HeroTitle>Unsplash</HeroTitle>

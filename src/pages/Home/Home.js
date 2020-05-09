@@ -30,6 +30,11 @@ export default function Home() {
         <div>
             <MainHero
                 bg={heroBackground && heroBackground.urls && heroBackground.urls.regular}
+                user={
+                    heroBackground &&
+                    heroBackground.user &&
+                    `${heroBackground.user.first_name} ${heroBackground.user.last_name}`
+                }
                 handleSearch={handleSearch}
             />
             <Gallery images={images} loading={loading} />

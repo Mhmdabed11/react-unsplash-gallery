@@ -1,9 +1,12 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 16px;
+    @media (max-width: 500px) {
+        padding: 16px 0;
+    }
 `;
 
 const gridItemsContainerStyle = css`
@@ -53,7 +56,6 @@ const gridItemsContainerStyle = css`
 `;
 
 export const Grid = styled.div`
-    max-width: 800px;
     margin: 0 auto;
     display: grid;
     grid-gap: 10px;
@@ -81,4 +83,9 @@ export const Loader = styled.div`
     background: #e6e6e6;
 `;
 
-export const SearchQuery = styled.h1``;
+export const SearchQuery = styled.h1`
+    @media (max-width: 500px) {
+        padding: 0 16px;
+        font-size: 28px;
+    }
+`;

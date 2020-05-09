@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const Section = styled.section`
     width: 100%;
-    background-color: red;
-    background-image: ${(props) => props.bg};
+    background-color: ${(props) => props.theme.imagePlaceHolder};
+    background-image: url(${(props) => props.bg});
+    background-size: cover;
+    background-position: 50% 50%;
 `;
 
 export const Container = styled.div`
@@ -11,6 +13,10 @@ export const Container = styled.div`
     padding-bottom: 152px;
     padding-left: 12px;
     padding-right: 12px;
+    @media (max-width: 768px) {
+        padding-top: 80px;
+        padding-bottom: 96px;
+    }
 `;
 
 export const Wrapper = styled.div`
@@ -24,12 +30,18 @@ export const HeroTitle = styled.div`
     font-weight: 700;
     display: inline;
     color: ${(props) => props.theme.heroTextColor};
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
 `;
 
 export const HeroSubTitle = styled.div`
     font-size: 18px;
     margin: 24px 0;
     color: ${(props) => props.theme.heroTextColor};
+    @media (max-width: 768px) {
+        font-size: 15px;
+    }
 `;
 
 export const SearchInputContainer = styled.div`
@@ -47,6 +59,9 @@ export const SearchInput = styled.input`
     outline: none;
     padding-left: 14px;
     font-size: 100%;
+    @media (max-width: 768px) {
+        height: 48px;
+    }
 `;
 
 export const SearchSVG = styled.svg`
@@ -64,6 +79,7 @@ export const ClearButton = styled.button`
     background-color: ${(props) => props.theme.heroInputContainerBgColor};
     padding: 0 14px;
     outline: none;
+    border-radius: 4px;
 `;
 
 export const ClearSVG = styled.svg`

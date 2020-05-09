@@ -3,16 +3,17 @@ import MainHero from "../../components/MainHero/MainHero";
 
 export default function Home() {
     const [heroBackground, setHeroBackground] = useState({});
+    console.log(heroBackground);
     useEffect(() => {
-        fetch(".netlify/functions/getRandomPhoto")
+        fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getRandomPhoto")
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => setHeroBackground(data))
             .catch((err) => console.log(err));
     }, []);
 
     return (
         <div>
-            <MainHero bg={heroBackground && heroBackground.urls && heroBackground.urls.full} />
+            <MainHero bg={heroBackground && heroBackground.urls && heroBackground.urls.regular} />
         </div>
     );
 }

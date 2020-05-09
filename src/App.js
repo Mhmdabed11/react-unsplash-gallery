@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import Home from './pages/Home/Home';
+import React, { useContext } from "react";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import Home from "./pages/Home/Home";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -17,10 +17,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const theme = {
-    heroTextColor: '#ffffff',
-    heroInputTextColor: '#111',
-    heroInputContainerBgColor: '#ffffff',
-    heroSVGsFill: '#767676',
+    heroTextColor: "#ffffff",
+    heroInputTextColor: "#111",
+    heroInputContainerBgColor: "#ffffff",
+    heroSVGsFill: "#767676",
+    imagePlaceHolder: "#979797",
 };
 
 export default function App() {

@@ -10,12 +10,19 @@ import {
     SearchSVG,
     ClearButton,
     ClearSVG,
+    SearchForm,
 } from "./MainHero.style";
 
 export default function MainHero({ bg }) {
     const [searchTerm, handleChange, setSearchTerm] = useFormInput("");
-    function handleClearButtonClick() {
+    function handleClearButtonClick(e) {
+        e.preventDefault();
         setSearchTerm("");
+    }
+
+    // handle form submission
+    function handleSearchFormSubmit(e) {
+        e.preventDefault();
     }
     return (
         <Section bg={bg}>
@@ -26,26 +33,39 @@ export default function MainHero({ bg }) {
                         The internet’s source of freely usable images.
                         <br /> Powered by creators everywhere.
                     </HeroSubTitle>
-                    <SearchInputContainer>
-                        <SearchSVG version="1.1" viewBox="0 0 32 32" width="32" height="32" aria-hidden="false">
-                            <path d="M31 28.64l-7.57-7.57a12.53 12.53 0 1 0-2.36 2.36l7.57 7.57zm-17.5-6a9.17 9.17 0 1 1 6.5-2.64 9.11 9.11 0 0 1-6.5 2.67z"></path>
-                        </SearchSVG>
-                        <SearchInput
-                            type="text"
-                            name="search"
-                            id="search"
-                            value={searchTerm}
-                            onChange={handleChange}
-                            placeholder="Search Photos"
-                        />
-                        <ClearButton disabled={!searchTerm} onClick={handleClearButtonClick}>
-                            {searchTerm ? (
-                                <ClearSVG version="1.1" viewBox="0 0 32 32" width="32" height="32" aria-hidden="false">
-                                    <path d="M25.33 8.55l-1.88-1.88-7.45 7.45-7.45-7.45-1.88 1.88 7.45 7.45-7.45 7.45 1.88 1.88 7.45-7.45 7.45 7.45 1.88-1.88-7.45-7.45z"></path>
-                                </ClearSVG>
-                            ) : null}
-                        </ClearButton>
-                    </SearchInputContainer>
+                    <SearchForm onSubmit={handleSearchFormSubmit}>
+                        <SearchInputContainer>
+                            <SearchSVG version="1.1" viewBox="0 0 32 32" width="32" height="32" aria-hidden="false">
+                                <path d="M31 28.64l-7.57-7.57a12.53 12.53 0 1 0-2.36 2.36l7.57 7.57zm-17.5-6a9.17 9.17 0 1 1 6.5-2.64 9.11 9.11 0 0 1-6.5 2.67z"></path>
+                            </SearchSVG>
+                            <SearchInput
+                                type="text"
+                                name="search"
+                                id="search"
+                                value={searchTerm}
+                                onChange={handleChange}
+                                placeholder="Search Photos"
+                            />
+                            <ClearButton
+                                role="button"
+                                type="button"
+                                disabled={!searchTerm}
+                                onClick={handleClearButtonClick}
+                            >
+                                {searchTerm ? (
+                                    <ClearSVG
+                                        version="1.1"
+                                        viewBox="0 0 32 32"
+                                        width="32"
+                                        height="32"
+                                        aria-hidden="false"
+                                    >
+                                        <path d="M25.33 8.55l-1.88-1.88-7.45 7.45-7.45-7.45-1.88 1.88 7.45 7.45-7.45 7.45 1.88 1.88 7.45-7.45 7.45 7.45 1.88-1.88-7.45-7.45z"></path>
+                                    </ClearSVG>
+                                ) : null}
+                            </ClearButton>
+                        </SearchInputContainer>
+                    </SearchForm>
                 </Wrapper>
             </Container>
         </Section>

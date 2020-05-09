@@ -87,3 +87,5 @@ export const ClearSVG = styled.svg`
     height: 20px;
     fill: ${(props) => props.theme.heroSVGsFill};
 `;
+
+export const SearchForm = styled.form``;

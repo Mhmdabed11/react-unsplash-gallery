@@ -37,12 +37,19 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */var r="function"==typeof Symbol&&Symbol.for,i=r?Symbol.for("react.element"):60103,a=r?Symbol.for("react.portal"):60106,o=r?Symbol.for("react.fragment"):60107,l=r?Symbol.for("react.strict_mode"):60108,u=r?Symbol.for("react.profiler"):60114,c=r?Symbol.for("react.provider"):60109,s=r?Symbol.for("react.context"):60110,f=r?Symbol.for("react.async_mode"):60111,d=r?Symbol.for("react.concurrent_mode"):60111,p=r?Symbol.for("react.forward_ref"):60112,h=r?Symbol.for("react.suspense"):60113,m=r?Symbol.for("react.suspense_list"):60120,g=r?Symbol.for("react.memo"):60115,y=r?Symbol.for("react.lazy"):60116,v=r?Symbol.for("react.block"):60121,b=r?Symbol.for("react.fundamental"):60117,w=r?Symbol.for("react.responder"):60118,k=r?Symbol.for("react.scope"):60119;function x(e){if("object"==typeof e&&null!==e){var t=e.$$typeof;switch(t){case i:switch(e=e.type){case f:case d:case o:case u:case l:case h:return e;default:switch(e=e&&e.$$typeof){case s:case p:case y:case g:case c:return e;default:return t}}case a:return t}}}function S(e){return x(e)===d}t.AsyncMode=f,t.ConcurrentMode=d,t.ContextConsumer=s,t.ContextProvider=c,t.Element=i,t.ForwardRef=p,t.Fragment=o,t.Lazy=y,t.Memo=g,t.Portal=a,t.Profiler=u,t.StrictMode=l,t.Suspense=h,t.isAsyncMode=function(e){return S(e)||x(e)===f},t.isConcurrentMode=S,t.isContextConsumer=function(e){return x(e)===s},t.isContextProvider=function(e){return x(e)===c},t.isElement=function(e){return"object"==typeof e&&null!==e&&e.$$typeof===i},t.isForwardRef=function(e){return x(e)===p},t.isFragment=function(e){return x(e)===o},t.isLazy=function(e){return x(e)===y},t.isMemo=function(e){return x(e)===g},t.isPortal=function(e){return x(e)===a},t.isProfiler=function(e){return x(e)===u},t.isStrictMode=function(e){return x(e)===l},t.isSuspense=function(e){return x(e)===h},t.isValidElementType=function(e){return"string"==typeof e||"function"==typeof e||e===o||e===d||e===u||e===l||e===h||e===m||"object"==typeof e&&null!==e&&(e.$$typeof===y||e.$$typeof===g||e.$$typeof===c||e.$$typeof===s||e.$$typeof===p||e.$$typeof===b||e.$$typeof===w||e.$$typeof===k||e.$$typeof===v)},t.typeOf=x},function(e,t,n){"use strict";n.r(t);var r=n(0),i=n.n(r),a=n(6),o=n.n(a),l=n(1);const u=l.c.section`
     width: 100%;
-    background-color: red;
+    background-color: ${e=>e.theme.imagePlaceHolder};
+    background-image: url(${e=>e.bg});
+    background-size: cover;
+    background-position: 50% 50%;
 `,c=l.c.div`
     padding-top: 144px;
     padding-bottom: 152px;
     padding-left: 12px;
     padding-right: 12px;
+    @media (max-width: 768px) {
+        padding-top: 80px;
+        padding-bottom: 96px;
+    }
 `,s=l.c.div`
     max-width: 800px;
     width: 100%;
@@ -52,10 +59,16 @@ object-assign
     font-weight: 700;
     display: inline;
     color: ${e=>e.theme.heroTextColor};
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
 `,d=l.c.div`
     font-size: 18px;
     margin: 24px 0;
     color: ${e=>e.theme.heroTextColor};
+    @media (max-width: 768px) {
+        font-size: 15px;
+    }
 `,p=l.c.div`
     background-color: ${e=>e.theme.heroInputContainerBgColor};
     display: flex;
@@ -69,6 +82,9 @@ object-assign
     outline: none;
     padding-left: 14px;
     font-size: 100%;
+    @media (max-width: 768px) {
+        height: 48px;
+    }
 `,m=l.c.svg`
     width: 20px;
     height: 20px;
@@ -82,11 +98,12 @@ object-assign
     background-color: ${e=>e.theme.heroInputContainerBgColor};
     padding: 0 14px;
     outline: none;
+    border-radius: 4px;
 `,y=l.c.svg`
     width: 20px;
     height: 20px;
     fill: ${e=>e.theme.heroSVGsFill};
-`;function v(){const[e,t,n]=b("");return i.a.createElement(u,null,i.a.createElement(c,null,i.a.createElement(s,null,i.a.createElement(f,null,"Unsplash"),i.a.createElement(d,null,"The internet’s source of freely usable images.",i.a.createElement("br",null)," Powered by creators everywhere."),i.a.createElement(p,null,i.a.createElement(m,{version:"1.1",viewBox:"0 0 32 32",width:"32",height:"32","aria-hidden":"false"},i.a.createElement("path",{d:"M31 28.64l-7.57-7.57a12.53 12.53 0 1 0-2.36 2.36l7.57 7.57zm-17.5-6a9.17 9.17 0 1 1 6.5-2.64 9.11 9.11 0 0 1-6.5 2.67z"})),i.a.createElement(h,{type:"text",name:"search",id:"search",value:e,onChange:t}),i.a.createElement(g,{disabled:!e,onClick:function(){n("")}},e?i.a.createElement(y,{version:"1.1",viewBox:"0 0 32 32",width:"32",height:"32","aria-hidden":"false"},i.a.createElement("path",{d:"M25.33 8.55l-1.88-1.88-7.45 7.45-7.45-7.45-1.88 1.88 7.45 7.45-7.45 7.45 1.88 1.88 7.45-7.45 7.45 7.45 1.88-1.88-7.45-7.45z"})):null)))))}const b=e=>{const[t,n]=Object(r.useState)(e);return[t,e=>n(e.target.value),n]};function w(){return Object(r.useEffect)(()=>{fetch(".netlify/functions/getRandomPhoto").then(e=>e.json()).then(e=>console.log(e)).catch(e=>console.log(e))},[]),i.a.createElement("div",null,i.a.createElement(v,null))}const k=l.b`
+`,v=l.c.form``;function b({bg:e}){const[t,n,r]=w("");return i.a.createElement(u,{bg:e},i.a.createElement(c,null,i.a.createElement(s,null,i.a.createElement(f,null,"Unsplash"),i.a.createElement(d,null,"The internet’s source of freely usable images.",i.a.createElement("br",null)," Powered by creators everywhere."),i.a.createElement(v,{onSubmit:function(e){e.preventDefault()}},i.a.createElement(p,null,i.a.createElement(m,{version:"1.1",viewBox:"0 0 32 32",width:"32",height:"32","aria-hidden":"false"},i.a.createElement("path",{d:"M31 28.64l-7.57-7.57a12.53 12.53 0 1 0-2.36 2.36l7.57 7.57zm-17.5-6a9.17 9.17 0 1 1 6.5-2.64 9.11 9.11 0 0 1-6.5 2.67z"})),i.a.createElement(h,{type:"text",name:"search",id:"search",value:t,onChange:n,placeholder:"Search Photos"}),i.a.createElement(g,{role:"button",type:"button",disabled:!t,onClick:function(e){e.preventDefault(),r("")}},t?i.a.createElement(y,{version:"1.1",viewBox:"0 0 32 32",width:"32",height:"32","aria-hidden":"false"},i.a.createElement("path",{d:"M25.33 8.55l-1.88-1.88-7.45 7.45-7.45-7.45-1.88 1.88 7.45 7.45-7.45 7.45 1.88 1.88 7.45-7.45 7.45 7.45 1.88-1.88-7.45-7.45z"})):null))))))}const w=e=>{const[t,n]=Object(r.useState)(e);return[t,e=>n(e.target.value),n]};function k(){const[e,t]=Object(r.useState)({});return Object(r.useEffect)(()=>{fetch("https://unsplash-gallery.netlify.app/.netlify/functions/searchUnsplash").then(e=>e.json()).then(e=>console.log(e)).catch(e=>console.log(e))},[]),i.a.createElement("div",null,i.a.createElement(b,{bg:e&&e.urls&&e.urls.regular}))}const x=l.b`
     body {
         font-family:-apple-system,BlinkMacSystemFont,San Francisco,Helvetica Neue,Helvetica,Ubuntu,Roboto,Noto,Segoe UI,Arial,sans-serif;
         margin:0;
@@ -98,4 +115,4 @@ object-assign
         padding:0;
         margin:0;
     }
-`,x={heroTextColor:"#ffffff",heroInputTextColor:"#111",heroInputContainerBgColor:"#ffffff",heroSVGsFill:"#767676"};function S(){return i.a.createElement(l.a,{theme:x},i.a.createElement(k,null),i.a.createElement(w,null))}o.a.render(i.a.createElement(S,null),document.getElementById("app"))}]);
+`,S={heroTextColor:"#ffffff",heroInputTextColor:"#111",heroInputContainerBgColor:"#ffffff",heroSVGsFill:"#767676",imagePlaceHolder:"#979797"};function T(){return i.a.createElement(l.a,{theme:S},i.a.createElement(x,null),i.a.createElement(k,null))}o.a.render(i.a.createElement(T,null),document.getElementById("app"))}]);

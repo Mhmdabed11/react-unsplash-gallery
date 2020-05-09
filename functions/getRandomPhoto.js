@@ -6,7 +6,6 @@ exports.handler = async function (event, context, callback) {
         headers: { Authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` },
     });
     const data = await res.json();
-    // const data = { name: "hey" };
     callback(null, {
         statusCode: 200,
         body: JSON.stringify(data),

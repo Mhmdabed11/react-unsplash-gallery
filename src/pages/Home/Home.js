@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import MainHero from '../../components/MainHero/MainHero';
+import React, { useEffect, useState } from "react";
+import MainHero from "../../components/MainHero/MainHero";
 
 export default function Home() {
+    const [heroBackground, setHeroBackground] = useState({});
     useEffect(() => {
-        fetch('.netlify/functions/searchUnsplash')
+        fetch(".netlify/functions/getRandomPhoto")
             .then((response) => response.json())
             .then((data) => console.log(data))
             .catch((err) => console.log(err));
@@ -11,7 +12,7 @@ export default function Home() {
 
     return (
         <div>
-            <MainHero />
+            <MainHero bg={heroBackground && heroBackground.urls && heroBackground.urls.full} />
         </div>
     );
 }

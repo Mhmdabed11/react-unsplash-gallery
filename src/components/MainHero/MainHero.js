@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
     Section,
     Container,
@@ -10,16 +10,16 @@ import {
     SearchSVG,
     ClearButton,
     ClearSVG,
-} from './MainHero.style';
+} from "./MainHero.style";
 
-export default function MainHero() {
-    const [searchTerm, handleChange, setSearchTerm] = useFormInput('');
+export default function MainHero({ bg }) {
+    const [searchTerm, handleChange, setSearchTerm] = useFormInput("");
 
     function handleClearButtonClick() {
-        setSearchTerm('');
+        setSearchTerm("");
     }
     return (
-        <Section>
+        <Section bg={bg}>
             <Container>
                 <Wrapper>
                     <HeroTitle>Unsplash</HeroTitle>

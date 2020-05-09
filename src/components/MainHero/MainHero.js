@@ -13,7 +13,7 @@ import {
     SearchForm,
 } from "./MainHero.style";
 
-export default function MainHero({ bg }) {
+export default function MainHero({ bg, handleSearch }) {
     const [searchTerm, handleChange, setSearchTerm] = useFormInput("");
     function handleClearButtonClick(e) {
         e.preventDefault();
@@ -23,6 +23,7 @@ export default function MainHero({ bg }) {
     // handle form submission
     function handleSearchFormSubmit(e) {
         e.preventDefault();
+        handleSearch(searchTerm);
     }
     return (
         <Section bg={bg}>

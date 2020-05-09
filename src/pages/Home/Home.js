@@ -10,6 +10,7 @@ export default function Home() {
     const [renderedRandomList, setRenderedRandomList] = useState(false);
 
     const fetchRandomPhotos = useCallback(() => {
+        setLoading(true);
         // get random images in the begining
         fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getListPhotos")
             .then((response) => {
@@ -21,6 +22,7 @@ export default function Home() {
             .then((data) => {
                 setImages(data);
                 setRenderedRandomList(true);
+                setLoading(false);
             })
             .catch((err) => console.log(err));
     }, []);

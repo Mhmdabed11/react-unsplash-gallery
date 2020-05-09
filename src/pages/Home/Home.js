@@ -6,6 +6,7 @@ export default function Home() {
     const [heroBackground, setHeroBackground] = useState({});
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getRandomPhoto")
@@ -21,15 +22,17 @@ export default function Home() {
     }, []);
 
     // handle form search
-    function handleSearch(searchTerm) {
+    async function handleSearch(searchTerm) {
+        setSearchQuery(searchTerm);
         setLoading(true);
         fetch(`https://unsplash-gallery.netlify.app/.netlify/functions/searchUnsplash?query=${searchTerm}`)
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 setLoading(false);
                 setImages(data.results);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log("Error", err));
     }
 
     return (
@@ -43,7 +46,8 @@ export default function Home() {
                 }
                 handleSearch={handleSearch}
             />
-            <Gallery images={images} loading={loading} />
+
+            <Gallery images={images} loading={loading} searchQuery={searchQuery} />
         </div>
     );
 }

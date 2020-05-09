@@ -1,5 +1,11 @@
 import styled, { css } from "styled-components";
 
+export const Container = styled.div`
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+`;
+
 const gridItemsContainerStyle = css`
     grid-column: span 2;
     grid-row: span 2;
@@ -49,7 +55,6 @@ const gridItemsContainerStyle = css`
 export const Grid = styled.div`
     max-width: 800px;
     margin: 0 auto;
-    padding: 16px;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
@@ -75,3 +80,5 @@ export const Loader = styled.div`
     height: 100%;
     background: #e6e6e6;
 `;
+
+export const SearchQuery = styled.h1``;

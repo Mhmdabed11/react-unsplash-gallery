@@ -13,12 +13,17 @@ export default function Home() {
             .then((response) => response.json())
             .then((data) => setHeroBackground(data))
             .catch((err) => console.log(err));
-
         // get random images in the begining
-        fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getListPhotos")
-            .then((response) => response.json())
-            .then((data) => setImages(data))
-            .catch((err) => console.log(err));
+        // fetch("https://unsplash-gallery.netlify.app/.netlify/functions/getListPhotos")
+        //     .then((response) => {
+        //         console.log(response);
+        //         if (!response.ok) {
+        //             throw Error(response.statusText);
+        //         }
+        //         return response.json();
+        //     })
+        //     .then((data) => setImages(data))
+        //     .catch((err) => console.log(err));
     }, []);
 
     // handle form search
@@ -26,13 +31,20 @@ export default function Home() {
         setSearchQuery(searchTerm);
         setLoading(true);
         fetch(`https://unsplash-gallery.netlify.app/.netlify/functions/searchUnsplash?query=${searchTerm}`)
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
             .then((data) => {
-                console.log(data);
                 setLoading(false);
                 setImages(data.results);
             })
-            .catch((err) => console.log("Error", err));
+            .catch((err) => {
+                setLoading(false);
+                setImages([]);
+            });
     }
 
     return (
